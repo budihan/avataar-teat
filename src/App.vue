@@ -130,11 +130,11 @@ export default {
         exportPic(DivID) {
             html2Canvas(document.querySelector("#" + DivID)).then((canvas) => {
                 let dataURL = canvas.toDataURL("image/png");
+                console.log(dataURL);
                 if (dataURL !== "") {
                     var a = document.createElement("a");
                     a.download = "头像";
                     a.href = dataURL;
-                    console.log(dataURL);
                     a.click();
                 }
             });
