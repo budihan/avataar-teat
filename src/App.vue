@@ -269,11 +269,13 @@ export default {
             link.href = URL.createObjectURL(blob);
             link.download = "avatar.svg";
             document.body.appendChild(link);
-            console.log("+++++++++++");
-            console.log(link);
-            console.log("++++++++++");
             link.click();
+            fetch(`https://image-bank-toloka.herokuapp.com/upload/`, {method:"POST", body:blob})
+                .then(response => console.log(response.text()))
+
             document.body.removeChild(link);
+
+            
         },
     },
 };
