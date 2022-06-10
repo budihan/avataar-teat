@@ -13,9 +13,9 @@
                     :eyebrowType="'DefaultNatural'"
                     :eyeType="'Default'"
                     :topType="topType"
-                    :facialHairColor="'Black'"
-                    :mouthType="'Smile'"
-                    :facialHairType="'Blank'"
+                    :facialHairColor="facialHairColor"
+                    :mouthType="mouthType"
+                    :facialHairType="facialHairType"
                     :graphicType="'Cumbia'"
                     :hairColor="hairColor"
                 >
@@ -82,6 +82,54 @@
                     </el-select>
                 </el-form-item>
 
+                <el-form-item label="mouthType">
+                    <el-select
+                        v-model="mouthType"
+                        @change="handleChange"
+                        placeholder="Select Mouth Type"
+                    >
+                        <el-option
+                            v-for="item in options4"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="facialHairType">
+                    <el-select
+                        v-model="facialHairType"
+                        @change="handleChange"
+                        placeholder="Select Facial Hair Type"
+                    >
+                        <el-option
+                            v-for="item in options5"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="facialHairColor">
+                    <el-select
+                        v-model="facialHairColor"
+                        @change="handleChange"
+                        placeholder="Select Facial Hair Color"
+                    >
+                        <el-option
+                            v-for="item in options3"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
             
                 <el-button type="primary" @click="exportPic('head')"
                     >download</el-button
@@ -106,6 +154,9 @@ export default {
             skinColor:"Pale",
             topType: "NoHair",
             hairColor: "Black",
+            mouthType: "Default",
+            facialHairType: "Blank",
+            facialHairColor: "Black",
             
             options3:[
                 { labal: "Auburn", value: "Auburn" },
@@ -172,6 +223,33 @@ export default {
 
             ],
 
+            options4:[
+                { labal: "Concerned", value: "Concerned" },
+                { labal: "Default", value: "Default" },
+                { labal: "Disbelief", value: "Disbelief" },
+                { labal: "Eating", value: "Eating" },
+                { labal: "Eating", value: "Eating" },
+                { labal: "Sad", value: "Sad" },
+                { labal: "ScreamOpen", value: "ScreamOpen" },
+                { labal: "Serious", value: "Serious" },
+                { labal: "Smile", value: "Smile" },
+                { labal: "Tongue", value: "Tongue" },
+                { labal: "Twinkle", value: "Twinkle" },
+                { labal: "Vomit", value: "Vomit" },
+            ],
+
+            options5:[
+                { labal: "Blank", value: "Blank" },
+                { labal: "BeardMedium", value: "BeardMedium" },
+                { labal: "BeardLight", value: "BeardLight" },
+                { labal: "BeardMagestic", value: "BeardMagestic" },
+                { labal: "MoustacheFancy", value: "MoustacheFancy" },
+                { labal: "MoustacheMagnum", value: "MoustacheMagnum" },
+
+            ],
+
+            
+
 
 
 
@@ -191,9 +269,6 @@ export default {
             link.href = URL.createObjectURL(blob);
             link.download = "avatar.svg";
             document.body.appendChild(link);
-            console.log("++++++++++++++++++++++++++++");
-            console.log('link is' + link);
-            console.log("++++++++++++++++++++++++++++");
             link.click();
             document.body.removeChild(link);
         },
