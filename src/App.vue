@@ -29,7 +29,7 @@
                 <el-select
                     v-model="accessoriesType"
                     @change="handleChange"
-                    placeholder="请选择"
+                    placeholder="please select"
                 >
                     <el-option
                         v-for="item in options1"
@@ -41,7 +41,7 @@
                 </el-select>
             </div>
             <div class="select">
-                <el-select v-model="clotheType" placeholder="请选择">
+                <el-select v-model="clotheType" placeholder="please select">
                     <el-option
                         v-for="item in options2"
                         :key="item.value"
@@ -52,7 +52,7 @@
                 </el-select>
             </div>
             <div class="select">
-                <el-select v-model="clotheColor" placeholder="请选择">
+                <el-select v-model="clotheColor" placeholder="please select">
                     <el-option
                         v-for="item in options3"
                         :key="item.value"
@@ -134,6 +134,7 @@ export default {
                     var a = document.createElement("a");
                     a.download = "头像";
                     a.href = dataURL;
+                    console.log(dataURL);
                     a.click();
                 }
             });
