@@ -273,12 +273,15 @@ export default {
             //link.click();
             fetch(`https://image-bank-toloka.herokuapp.com/upload/`, {
                 method:"POST", 
-                headers: {
-                'Content-Type': 'multipart/form-data',
-                'Accept': 'application/json'
-                },
+                mode:'no-cors',
+                // headers: {
+                // 'Content-Type': 'multipart/form-data',
+                // // 'Content-Length' : '',
+                // // 'Host': '',
+                // 'Accept': 'application/json'
+                // },
                 body:blob})
-                .then(response => window.alert(response.text()))
+                .then(response => console.log(response.text()))
 
             
             
