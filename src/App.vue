@@ -259,6 +259,7 @@ export default {
         handleChange(value) {
             console.log(value);
         },
+        
         exportPic() {
             console.log(this.$refs.avatar.$el.outerHTML);
             const link = document.createElement("a");
@@ -269,9 +270,18 @@ export default {
             link.href = URL.createObjectURL(blob);
             link.download = "avatar.svg";
             document.body.appendChild(link);
-            link.click();
-            fetch(`https://image-bank-toloka.herokuapp.com/upload/`, {method:"POST", body:blob})
-                .then(response => console.log(response.text()))
+            //link.click();
+            fetch(`https://image-bank-toloka.herokuapp.com/upload/`, {
+                method:"POST", 
+                headers: {
+                'Content-Type': 'multipart/form-data',
+                'Accept': 'application/json'
+                },
+                body:blob})
+                .then(response => window.alert(response.text()))
+
+            
+            
 
             document.body.removeChild(link);
 
