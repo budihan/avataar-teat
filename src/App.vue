@@ -191,6 +191,7 @@ export default {
             link.href = URL.createObjectURL(blob);
             link.download = "avatar.svg";
             document.body.appendChild(link);
+            console.log(link);
             link.click();
             document.body.removeChild(link);
         },
