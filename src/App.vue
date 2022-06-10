@@ -3,75 +3,97 @@
         <div class="main">
             <div class="head" id="head">
                 <avataaars
+                    ref="avatar"
                     :isCircle="istrue"
                     :circleColor="circleColor"
-                    :clotheType="clotheType"
-                    :accessoriesType="accessoriesType"
-                    :clotheColor="clotheColor"
-                    :eyebrowType="'Angry'"
-                    :eyeType="'Cry'"
-                    :mouthType="'Eating'"
-                    :facialHairColor="'Blonde'"
+                    :clotheType="'Hoodie'"
+                    :accessoriesType="'Blank'"
+                    :skinColor="skinColor"
+                    :clotheColor="'Blue01'"
+                    :eyebrowType="'DefaultNatural'"
+                    :eyeType="'Default'"
+                    :topType="topType"
+                    :facialHairColor="'Black'"
+                    :mouthType="'Smile'"
+                    :facialHairType="'Blank'"
                     :graphicType="'Cumbia'"
+                    :hairColor="hairColor"
                 >
                 </avataaars>
             </div>
-            <div class="radio">
-                <el-radio v-model="istrue" :label="true">Circle</el-radio>
-                <el-radio v-model="istrue" :label="false"
-                    >Transparent
-                </el-radio>
-            </div>
-            <div class="colorChoose">
-                <el-color-picker v-model="circleColor"></el-color-picker>
-            </div>
-            <div class="select">
-                <el-select
-                    v-model="accessoriesType"
-                    @change="handleChange"
-                    placeholder="please select"
+            <el-form ref="form" label-width="80px">
+                <el-form-item label="isCircle">
+                    <el-radio v-model="istrue" :label="true">Circle</el-radio>
+                    <el-radio v-model="istrue" :label="false"
+                        >Transparent
+                    </el-radio>
+                </el-form-item>
+
+                <el-form-item label="circleColor">
+                    <el-color-picker v-model="circleColor"></el-color-picker>
+                </el-form-item>
+
+                
+                <el-form-item label="skinColor">
+                    <el-select
+                        v-model="skinColor"
+                        @change="handleChange"
+                        placeholder="Select Skin Color"
+                    >
+                        <el-option
+                            v-for="item in options1"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="topType">
+                    <el-select
+                        v-model="topType"
+                        @change="handleChange"
+                        placeholder="Select Top Type"
+                    >
+                        <el-option
+                            v-for="item in options2"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
+                <el-form-item label="hairColor">
+                    <el-select
+                        v-model="hairColor"
+                        @change="handleChange"
+                        placeholder="Select Hair Color"
+                    >
+                        <el-option
+                            v-for="item in options3"
+                            :key="item.value"
+                            :label="item.label"
+                            :value="item.value"
+                        >
+                        </el-option>
+                    </el-select>
+                </el-form-item>
+
+            
+                <el-button type="primary" @click="exportPic('head')"
+                    >download</el-button
                 >
-                    <el-option
-                        v-for="item in options1"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    >
-                    </el-option>
-                </el-select>
-            </div>
-            <div class="select">
-                <el-select v-model="clotheType" placeholder="please select">
-                    <el-option
-                        v-for="item in options2"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    >
-                    </el-option>
-                </el-select>
-            </div>
-            <div class="select">
-                <el-select v-model="clotheColor" placeholder="please select">
-                    <el-option
-                        v-for="item in options3"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value"
-                    >
-                    </el-option>
-                </el-select>
-            </div>
-            <el-button type="primary" @click="exportPic('head')"
-                >下载图片</el-button
-            >
+            </el-form>
         </div>
     </div>
 </template>
 
 <script>
 import Avataaars from "vuejs-avataaars";
-import html2Canvas from "html2canvas";
+// import html2Canvas from "html2canvas";
 export default {
     name: "App",
     components: {
@@ -81,63 +103,96 @@ export default {
         return {
             istrue: true,
             circleColor: "#6fb8e0",
-            accessoriesType: "Kurt",
-            clotheType: "BlazerShirt",
-            clotheColor: "Blue02",
-            options1: [
-                { labal: "Blank", value: "Blank" },
-                { labal: "Kurt", value: "Kurt" },
-                { labal: "Prescription01", value: "Prescription01" },
-                { labal: "Prescription02", value: "Prescription02" },
-                { labal: "Round", value: "Round" },
-                { labal: "Sunglasses", value: "Sunglasses" },
-                { labal: "Wayfarers", value: "Wayfarers" },
-            ],
-            options2: [
-                { labal: "BlazerShirt", value: "BlazerShirt" },
-                { labal: "BlazerSweater", value: "BlazerSweater" },
-                { labal: "CollarSweater", value: "CollarSweater" },
-                { labal: "GraphicShirt", value: "GraphicShirt" },
-                { labal: "Hoodie", value: "Hoodie" },
-                { labal: "Overall", value: "Overall" },
-                { labal: "ShirtCrewNeck", value: "ShirtCrewNeck" },
-                { labal: "ShirtScoopNeck", value: "ShirtScoopNeck" },
-                { labal: "ShirtVNeck", value: "ShirtVNeck" },
-            ],
-            options3: [
+            skinColor:"Pale",
+            topType: "NoHair",
+            hairColor: "Black",
+            
+            options3:[
+                { labal: "Auburn", value: "Auburn" },
                 { labal: "Black", value: "Black" },
-                { labal: "Blue01", value: "Blue01" },
-                { labal: "Blue02", value: "Blue02" },
-                { labal: "Blue03", value: "Blue03" },
-                { labal: "Gray01", value: "Gray01" },
-                { labal: "Gray02", value: "Gray02" },
-                { labal: "Heather", value: "Heather" },
-                { labal: "PastelBlue", value: "PastelBlue" },
-                { labal: "PastelGreen", value: "PastelGreen" },
-                { labal: "PastelOrange", value: "PastelOrange" },
-                { labal: "PastelRed", value: "PastelRed" },
-                { labal: "PastelYellow", value: "PastelYellow" },
-                { labal: "Pink", value: "Pink" },
+                { labal: "Blonde", value: "Blonde" },
+                { labal: "BlondeGolden", value: "BlondeGolden" },
+                { labal: "Brown", value: "Brown" },
+                { labal: "BrownDark", value: "BrownDark" },
+                { labal: "PastelPink", value: "PastelPink" },
+                { labal: "Platinum", value: "Platinum" },
                 { labal: "Red", value: "Red" },
-                { labal: "White", value: "White" },
+                { labal: "SilverGray", value: "SilverGray" },
             ],
+            
+            
+            
+            options1:[
+                { labal: "Tanned", value: "Tanned" },
+                { labal: "Yellow", value: "Yellow" },
+                { labal: "Pale", value: "Pale" },
+                { labal: "Light", value: "Light" },
+                { labal: "Brown", value: "Brown" },
+                { labal: "DarkBrown", value: "DarkBrown" },
+                { labal: "Black", value: "Black" },
+            ],
+            options2:[
+                { labal: "NoHair", value: "NoHair" },
+                { labal: "Eyepatch", value: "Eyepatch" },
+                { labal: "Hat", value: "Hat" },
+                { labal: "Hijab", value: "Hijab" },
+                { labal: "Turban", value: "Turban" },
+                { labal: "WinterHat1", value: "WinterHat1" },
+                { labal: "WinterHat2", value: "WinterHat2" },
+                { labal: "WinterHat3", value: "WinterHat3" },
+                { labal: "WinterHat4", value: "WinterHat4" },
+                { labal: "LongHairBigHair", value: "LongHairBigHair" },
+                { labal: "LongHairBob", value: "LongHairBob" },
+                { labal: "LongHairBun", value: "LongHairBun" },
+                { labal: "LongHairCurly", value: "LongHairCurly" },
+                { labal: "LongHairCurvy", value: "LongHairCurvy" },
+                { labal: "LongHairDreads", value: "LongHairDreads" },
+                { labal: "LongHairFrida", value: "LongHairFrida" },
+                { labal: "LongHairFro", value: "LongHairFro" },
+                { labal: "LongHairFroBand", value: "LongHairFroBand" },
+                { labal: "LongHairNotTooLong", value: "LongHairNotTooLong" },
+                { labal: "LongHairShavedSides", value: "LongHairShavedSides" },
+                { labal: "LongHairMiaWallace", value: "LongHairMiaWallace" },
+                { labal: "LongHairStraight", value: "LongHairStraight" },
+                { labal: "LongHairStraight2", value: "LongHairStraight2" },
+                { labal: "LongHairStraightStrand", value: "LongHairStraightStrand" },
+                { labal: "ShortHairDreads01", value: "ShortHairDreads01" },
+                { labal: "ShortHairDreads02", value: "ShortHairDreads02" },
+                { labal: "ShortHairFrizzle", value: "ShortHairFrizzle" },
+                { labal: "ShortHairShaggyMullet", value: "ShortHairShaggyMullet" },
+                { labal: "ShortHairShortCurly", value: "ShortHairShortCurly" },
+                { labal: "ShortHairShortFlat", value: "ShortHairShortFlat" },
+                { labal: "ShortHairShortRound", value: "ShortHairShortRound" },
+                { labal: "ShortHairShortWaved", value: "ShortHairShortWaved" },
+                { labal: "ShortHairSides", value: "ShortHairSides" },
+                { labal: "ShortHairTheCaesar", value: "ShortHairTheCaesar" },
+                { labal: "ShortHairTheCaesarSidePart", value: "ShortHairTheCaesarSidePart" },
+  
+
+
+            ],
+
+
+
+
         };
     },
     methods: {
         handleChange(value) {
             console.log(value);
         },
-        exportPic(DivID) {
-            html2Canvas(document.querySelector("#" + DivID)).then((canvas) => {
-                let dataURL = canvas.toDataURL("image/png");
-                console.log(dataURL);
-                if (dataURL !== "") {
-                    var a = document.createElement("a");
-                    a.download = "头像";
-                    a.href = dataURL;
-                    a.click();
-                }
+        exportPic() {
+            console.log(this.$refs.avatar.$el.outerHTML);
+            const link = document.createElement("a");
+            let blob = new Blob([this.$refs.avatar.$el.outerHTML], {
+                type: "image/svg+xml",
             });
+            link.style.display = "none";
+            link.href = URL.createObjectURL(blob);
+            link.download = "avatar.svg";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         },
     },
 };
