@@ -2,30 +2,17 @@
     <div id="app">
         <div class="main">
             <div class="head" id="head">
-                <avataaars
-                    ref="avatar"
-                    :isCircle="istrue"
-                    :circleColor="circleColor"
-                    :clotheType="'Hoodie'"
-                    :accessoriesType="'Blank'"
-                    :skinColor="skinColor"
-                    :clotheColor="'Blue01'"
-                    :eyebrowType="'DefaultNatural'"
-                    :eyeType="'Default'"
-                    :topType="topType"
-                    :facialHairColor="facialHairColor"
-                    :mouthType="mouthType"
-                    :facialHairType="facialHairType"
-                    :graphicType="'Cumbia'"
-                    :hairColor="hairColor"
-                >
+                <avataaars ref="avatar" :isCircle="istrue" :circleColor="circleColor" :clotheType="'Hoodie'"
+                    :accessoriesType="'Blank'" :skinColor="skinColor" :clotheColor="'Blue01'"
+                    :eyebrowType="'DefaultNatural'" :eyeType="'Default'" :topType="topType"
+                    :facialHairColor="facialHairColor" :mouthType="mouthType" :facialHairType="facialHairType"
+                    :graphicType="'Cumbia'" :hairColor="hairColor">
                 </avataaars>
             </div>
             <el-form ref="form" label-width="80px">
                 <el-form-item label="isCircle">
                     <el-radio v-model="istrue" :label="true">Circle</el-radio>
-                    <el-radio v-model="istrue" :label="false"
-                        >Transparent
+                    <el-radio v-model="istrue" :label="false">Transparent
                     </el-radio>
                 </el-form-item>
 
@@ -33,107 +20,51 @@
                     <el-color-picker v-model="circleColor"></el-color-picker>
                 </el-form-item>
 
-                
+
                 <el-form-item label="skinColor">
-                    <el-select
-                        v-model="skinColor"
-                        @change="handleChange"
-                        placeholder="Select Skin Color"
-                    >
-                        <el-option
-                            v-for="item in options1"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="skinColor" @change="handleChange" placeholder="Select Skin Color">
+                        <el-option v-for="item in options1" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
                 <el-form-item label="topType">
-                    <el-select
-                        v-model="topType"
-                        @change="handleChange"
-                        placeholder="Select Top Type"
-                    >
-                        <el-option
-                            v-for="item in options2"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="topType" @change="handleChange" placeholder="Select Top Type">
+                        <el-option v-for="item in options2" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
                 <el-form-item label="hairColor">
-                    <el-select
-                        v-model="hairColor"
-                        @change="handleChange"
-                        placeholder="Select Hair Color"
-                    >
-                        <el-option
-                            v-for="item in options3"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="hairColor" @change="handleChange" placeholder="Select Hair Color">
+                        <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
                 <el-form-item label="mouthType">
-                    <el-select
-                        v-model="mouthType"
-                        @change="handleChange"
-                        placeholder="Select Mouth Type"
-                    >
-                        <el-option
-                            v-for="item in options4"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="mouthType" @change="handleChange" placeholder="Select Mouth Type">
+                        <el-option v-for="item in options4" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
                 <el-form-item label="facialHairType">
-                    <el-select
-                        v-model="facialHairType"
-                        @change="handleChange"
-                        placeholder="Select Facial Hair Type"
-                    >
-                        <el-option
-                            v-for="item in options5"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="facialHairType" @change="handleChange" placeholder="Select Facial Hair Type">
+                        <el-option v-for="item in options5" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
                 <el-form-item label="facialHairColor">
-                    <el-select
-                        v-model="facialHairColor"
-                        @change="handleChange"
-                        placeholder="Select Facial Hair Color"
-                    >
-                        <el-option
-                            v-for="item in options3"
-                            :key="item.value"
-                            :label="item.label"
-                            :value="item.value"
-                        >
+                    <el-select v-model="facialHairColor" @change="handleChange" placeholder="Select Facial Hair Color">
+                        <el-option v-for="item in options3" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
 
-            
-                <el-button type="primary" @click="exportPic('head')"
-                    >download</el-button
-                >
+
+                <el-button type="primary" @click="exportPic('head')">download</el-button>
             </el-form>
         </div>
     </div>
@@ -151,14 +82,14 @@ export default {
         return {
             istrue: true,
             circleColor: "#6fb8e0",
-            skinColor:"Pale",
+            skinColor: "Pale",
             topType: "NoHair",
             hairColor: "Black",
             mouthType: "Default",
             facialHairType: "Blank",
             facialHairColor: "Black",
-            
-            options3:[
+
+            options3: [
                 { labal: "Auburn", value: "Auburn" },
                 { labal: "Black", value: "Black" },
                 { labal: "Blonde", value: "Blonde" },
@@ -170,10 +101,10 @@ export default {
                 { labal: "Red", value: "Red" },
                 { labal: "SilverGray", value: "SilverGray" },
             ],
-            
-            
-            
-            options1:[
+
+
+
+            options1: [
                 { labal: "Tanned", value: "Tanned" },
                 { labal: "Yellow", value: "Yellow" },
                 { labal: "Pale", value: "Pale" },
@@ -182,7 +113,7 @@ export default {
                 { labal: "DarkBrown", value: "DarkBrown" },
                 { labal: "Black", value: "Black" },
             ],
-            options2:[
+            options2: [
                 { labal: "NoHair", value: "NoHair" },
                 { labal: "Eyepatch", value: "Eyepatch" },
                 { labal: "Hat", value: "Hat" },
@@ -218,12 +149,12 @@ export default {
                 { labal: "ShortHairSides", value: "ShortHairSides" },
                 { labal: "ShortHairTheCaesar", value: "ShortHairTheCaesar" },
                 { labal: "ShortHairTheCaesarSidePart", value: "ShortHairTheCaesarSidePart" },
-  
+
 
 
             ],
 
-            options4:[
+            options4: [
                 { labal: "Concerned", value: "Concerned" },
                 { labal: "Default", value: "Default" },
                 { labal: "Disbelief", value: "Disbelief" },
@@ -238,7 +169,7 @@ export default {
                 { labal: "Vomit", value: "Vomit" },
             ],
 
-            options5:[
+            options5: [
                 { labal: "Blank", value: "Blank" },
                 { labal: "BeardMedium", value: "BeardMedium" },
                 { labal: "BeardLight", value: "BeardLight" },
@@ -248,7 +179,7 @@ export default {
 
             ],
 
-            
+
 
 
 
@@ -259,9 +190,9 @@ export default {
         handleChange(value) {
             console.log(value);
         },
-        
+
         exportPic() {
-            console.log(this.$refs.avatar.$el.outerHTML);
+           //  console.log(this.$refs.avatar.$el.outerHTML);
             const link = document.createElement("a");
             let blob = new Blob([this.$refs.avatar.$el.outerHTML], {
                 type: "image/svg+xml",
@@ -271,24 +202,35 @@ export default {
             link.download = "avatar.svg";
             document.body.appendChild(link);
             //link.click();
-            fetch(`https://image-bank-toloka.herokuapp.com/upload/`, {
-                method:"POST", 
-                mode:'no-cors',
+            // data = new FormData();
+            const file = new File([blob], `my_image${new Date()}.jpeg`, { type: "image/jpeg", lastModified: new Date(), size: 2, });
+            console.log(blob, file)
+
+            const url = 'https://image-bank-toloka.herokuapp.com'
+            //const dev_url = `http://localhost:5000/upload`
+            fetch(url + '/upload', {
+                method: "POST",
+               //  mode: 'no-cors',
                 // headers: {
                 // 'Content-Type': 'multipart/form-data',
                 // // 'Content-Length' : '',
                 // // 'Host': '',
                 // 'Accept': 'application/json'
                 // },
-                body:blob})
-                .then(response => console.log(response.text()))
+                body: blob
+            })
+                .then(async response => {
+                    const a = await response.text()
+                    const file_url = url + `/data/${a}`
+                    console.log(file_url)
+                })
 
-            
-            
+
+
 
             document.body.removeChild(link);
 
-            
+
         },
     },
 };
@@ -308,6 +250,7 @@ export default {
     margin: 60px auto;
     text-align: center;
 }
+
 .head {
     width: 300px;
     margin: 0px auto;
