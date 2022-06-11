@@ -217,7 +217,13 @@ export default {
                     const file_url = url + `/data/${a}`
                     console.log(file_url)
                     console.log(a)
-                    window.alert("Please copy this link to Toloka: \n" + file_url)
+                    window.alert("Link copied, paste in Toloka")
+                    // var text = "Example text to appear on clipboard";
+                    navigator.clipboard.writeText(file_url).then(function() {
+                    console.log('Async: Copying to clipboard was successful!');
+                    }, function(err) {
+                    console.error('Async: Could not copy text: ', err);
+                    });
                     
                 })
 
