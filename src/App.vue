@@ -64,7 +64,7 @@
                 </el-form-item>
 
 
-                <el-button type="primary" @click="exportPic('head')">download</el-button>
+                <el-button type="primary" @click="exportPic('head')">Save</el-button>
             </el-form>
         </div>
     </div>
@@ -210,13 +210,6 @@ export default {
             //const dev_url = `http://localhost:5000/upload`
             fetch(url + '/upload', {
                 method: "POST",
-               //  mode: 'no-cors',
-                // headers: {
-                // 'Content-Type': 'multipart/form-data',
-                // // 'Content-Length' : '',
-                // // 'Host': '',
-                // 'Accept': 'application/json'
-                // },
                 body: blob
             })
                 .then(async response => {
@@ -224,11 +217,9 @@ export default {
                     const file_url = url + `/data/${a}`
                     console.log(file_url)
                     console.log(a)
-                    window.alert("Please copy this link to Toloka: " + file_url)
+                    window.alert("Please copy this link to Toloka: \n" + file_url)
+                    
                 })
-
-
-
 
             document.body.removeChild(link);
 
