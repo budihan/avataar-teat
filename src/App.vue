@@ -223,6 +223,8 @@ export default {
                     const a = await response.text()
                     const file_url = url + `/data/${a}`
                     console.log(file_url)
+                    console.log(a)
+                    window.alert("Please copy this link to Toloka: " + file_url)
                 })
 
 
